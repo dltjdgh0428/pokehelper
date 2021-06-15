@@ -1,0 +1,152 @@
+html, body {
+    overflow: hidden;
+	padding: 0;
+	margin: 0;
+	height: 100%;
+    width: 100%;
+    font-family: DungGeunMo;
+    text-align: center;
+    background-image: url("media/배경화면.jpg");
+}
+@font-face {
+    font-family: 'DungGeunMo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+header{
+    text-align: left;
+    height: 22%;
+}
+nav{
+    background-image: url("media/따라큐.jpg") ; 
+}
+a{
+   text-decoration: none;
+   color: black;
+}
+ul{
+    position: relative;
+    bottom: 24px;
+    text-align: center;
+}
+
+ul li{
+    margin: 15px;
+    height: 5px;
+    display: inline-block;
+}
+nav{
+    display: inline-block;
+    border-radius: 15px;
+    border:  3px solid black;
+    color: black;
+    width: 98%;
+    text-shadow: 2px 2px grey;
+    height: 50px;
+    margin: 3px;
+    font-size: x-large;
+   
+}
+
+section{
+    overflow: auto;
+    background-image: url("media/따라큐.jpg") ; 
+    display: inline-block;
+    height: 63%;
+    margin: 5px;
+    width: 98%;
+    border-radius: 15px;
+    border:  3px solid black;
+}
+footer {
+    height : 3%; 
+    border-radius: 10px;
+    border:  3px solid black;
+    width: 98%;
+    margin: 5px;
+    background-image: url("media/따라큐.jpg") ; 
+}
+#↓{
+    font-size: 36px;
+}
+#introduce{
+    text-shadow: 1px 1px grey;
+    font-size: large;
+}
+select{
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#pan{
+    margin-left: 25%;
+    width: 50%;
+    background-image: url("media/따라큐.jpg") ;  
+    border:  3px solid black;
+    padding: 3px;
+    border-radius: 15px;
+    text-align: left;
+
+}
+#othertype{
+    text-align: center;
+}
+#pic{
+    overflow: hidden;
+    margin-left: 25%;
+    width: 48%;
+    background-image: url("media/따라큐노패턴.jpg") ;  
+    border:  3px solid black;
+    padding: 3px;
+    border-radius: 15px;
+}
+#typeclear{
+    padding: 8px;
+    border-radius: 15px;
+    font-family: DungGeunMo;
+    background-color: burlywood;
+}
+#typeclearB{
+    padding: 8px;
+    border-radius: 15px;
+    font-family: DungGeunMo;
+    background-color: burlywood;
+}
+#typeclear:hover{
+    background-color: pink;
+}
+#inputT{
+    border:  2px solid black;
+    border-radius: 15px;
+    padding: 8px;
+    background-color: burlywood;
+    
+}
+#gameS{
+    overflow: hidden;
+}
+#gamehead{
+    position: relative;
+}
+#Qnum{
+    text-align: right;
+}
+#pimage{
+    overflow: hidden;
+}
+#chn{
+    text-align: right;
+}
+#miniTitle{
+    font-size: large ; 
+    text-shadow: 1px 1px grey;
+}
+::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+#makeH{
+    margin-left: 70%;
+}

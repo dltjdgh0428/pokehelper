@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="poke.css" type="text/css" rel="stylesheet">
+    <title>포켓몬 배틀 도우미</title>
+    <script>
+        var calnum = 1;
+        var typearr = [];
+        var text = "";
+        typearr[1] = "노말"; typearr[2] = "불꽃"; typearr[3] = "물"; typearr[4] = "풀";
+        typearr[5] = "전기"; typearr[6] = "얼음"; typearr[7] = "격투"; typearr[8] = "독";
+        typearr[9] = "땅"; typearr[10] = "비행"; typearr[11] = "에스퍼"; typearr[12] = "벌레";
+        typearr[13] = "바위"; typearr[14] = "고스트"; typearr[15] = "드래곤"; typearr[16] = "악";
+        typearr[17] = "강철"; typearr[18] = "페어리";
+        var typenum = [];
+
+
+
+        function Pokeprint() {
+            var typea = document.getElementById('type1').options[document.getElementById('type1').selectedIndex].text;
+            var typeb = document.getElementById('type2').options[document.getElementById('type2').selectedIndex].text;
+            if (typea == typeb) {
+                document.getElementById('othertype').innerHTML = '상대의 타입 : ' + typea + " 타입<br>";
+            } else {
+                document.getElementById('othertype').innerHTML = '상대의 타입 : ' + typea + " " + typeb + " 타입<br>";
+            }
+            for (var i = 0; i < 19; i++) {
+                typenum[i] = 1;
+            }
+            switch (typea) {
+                case "노말":
+                    typenum[7] *= 2;
+                    typenum[14] *= 0;
+                    break;
+                case "격투":
+                    typenum[10] *= 2;
+                    typenum[11] *= 2;
+                    typenum[12] *= 0.5;
+                    typenum[13] *= 0.5;
+                    typenum[16] *= 0.5;
+                    typenum[18] *= 2;
+                    break;
+                case "독":
+                    typenum[4] *= 0.5;
+                    typenum[7] *= 0.5;
+                    typenum[8] *= 0.5;
+                    typenum[9] *= 2;
+                    typenum[11] *= 2;
+                    typenum[12] *= 0.5;
+                    typenum[18] *= 0.5;
+                    break;
+                case "땅":
+                    typenum[3] *= 2;
+                    typenum[4] *= 2;
+                    typenum[5] *= 0;
+                    typenum[6] *= 2;
+                    typenum[7] *= 0.5;
+                    typenum[13] *= 0.5;
+                    break;
+                case "비행":
+                    typenum[4] *= 0.5;
+                    typenum[5] *= 2;
+                    typenum[6] *= 2;
+                    typenum[7] *= 0.5;
+                    typenum[9] *= 0;
+                    typenum[12] *= 0.5;
+                    typenum[13] *= 2;
+                    break;
+                case "벌레":
+                    typenum[2] *= 2;
+                    typenum[4] *= 0.5;
+                    typenum[7] *= 0.5;
+                    typenum[9] *= 0.5;
+                    typenum[10] *= 2;
+                    typenum[13] *= 2;
+                    break;
+                case "바위":
+                    typenum[1] *= 0.5;
+                    typenum[2] *= 0.5;
+                    typenum[3] *= 2;
+                    typenum[4] *= 2;
+                    typenum[7] *= 2;
+                    typenum[8] *= 0.5;
+                    typenum[9] *= 2;
+                    typenum[10] *= 0.5;
+                    typenum[17] *= 2;
+                    break;
+                case "고스트":
+                    typenum[1] *= 0;
+                    typenum[7] *= 0;
+                    typenum[8] *= 0.5;
+                    typenum[12] *= 0.5;
+                    typenum[14] *= 2;
+                    typenum[16] *= 2;
+                    break;
+                case "강철":
+                    typenum[1] *= 0.5;
+                    typenum[2] *= 2;
+                    typenum[4] *= 0.5;
+                    typenum[6] *= 0.5;
+                    typenum[7] *= 2;
+                    typenum[8] *= 0;
+                    typenum[9] *= 2;
+                    typenum[10] *= 0.5;
+                    typenum[11] *= 0.5;
+                    typenum[12] *= 0.5;
+                    typenum[13] *= 0.5;
+                    typenum[15] *= 0.5;
+                    typenum[17] *= 0.5;
+                    typenum[18] *= 0.5;
+                    break;
+                case "불꽃":
+                    typenum[2] *= 0.5;
+                    typenum[3] *= 2;
+                    typenum[4] *= 0.5;
+                    typenum[6] *= 0.5;
+                    typenum[9] *= 2;
+                    typenum[12] *= 0.5;
+                    typenum[13] *= 2;
+                    typenum[17] *= 0.5;
+                    typenum[18] *= 0.5;
+                    break;
+                case "물":
+                    typenum[2] *= 0.5;
+                    typenum[3] *= 0.5;
+                    typenum[4] *= 2;
+                    typenum[5] *= 2;
+                    typenum[6] *= 0.5;
+                    typenum[17] *= 0.5;
+                    break;
+                case "전기":
+                    typenum[5] *= 0.5;
+                    typenum[9] *= 2;
+                    typenum[10] *= 0.5;
+                    break;
+                case "풀":
+                    typenum[2] *= 2;
+                    typenum[3] *= 0.5;
+                    typenum[4] *= 0.5;
+                    typenum[5] *= 0.5;
+                    typenum[6] *= 2;
+                    typenum[8] *= 2;
+                    typenum[9] *= 0.5;
+                    typenum[10] *= 2;
+                    typenum[12] *= 2;
+                    break;
+                case "얼음":
+                    typenum[2] *= 2;
+                    typenum[6] *= 0.5;
+                    typenum[7] *= 2;
+                    typenum[13] *= 2;
+                    typenum[17] *= 2;
+                    break;
+                case "에스퍼":
+                    typenum[7] *= 0.5;
+                    typenum[11] *= 0.5;
+                    typenum[12] *= 2;
+                    typenum[14] *= 2;
+                    typenum[16] *= 2;
+                    break;
+                case "드래곤":
+                    typenum[2] *= 0.5;
+                    typenum[3] *= 0.5;
+                    typenum[4] *= 0.5;
+                    typenum[5] *= 0.5;
+                    typenum[6] *= 2;
+                    typenum[15] *= 2;
+                    typenum[18] *= 2;
+                    break;
+                case "악":
+                    typenum[7] *= 2;
+                    typenum[11] *= 0;
+                    typenum[12] *= 2;
+                    typenum[14] *= 0.5;
+                    typenum[16] *= 0.5;
+                    typenum[18] *= 2;
+                    break;
+                case "페어리":
+                    typenum[7] *= 0.5;
+                    typenum[8] *= 2;
+                    typenum[12] *= 0.5;
+                    typenum[15] *= 0;
+                    typenum[16] *= 0.5;
+                    typenum[17] *= 2;
+                    break;
+                default:
+                    break;
+            }
+            if (typea != typeb) {
+                switch (typeb) {
+                    case "노말":
+                        typenum[7] *= 2;
+                        typenum[14] *= 0;
+                        break;
+
+                    case "격투":
+                        typenum[10] *= 2;
+                        typenum[11] *= 2;
+                        typenum[12] *= 0.5;
+                        typenum[13] *= 0.5;
+                        typenum[16] *= 0.5;
+                        typenum[18] *= 2;
+                        break;
+                    case "독":
+                        typenum[4] *= 0.5;
+                        typenum[7] *= 0.5;
+                        typenum[8] *= 0.5;
+                        typenum[9] *= 2;
+                        typenum[11] *= 2;
+                        typenum[12] *= 0.5;
+                        typenum[18] *= 0.5;
+                        break;
+                    case "땅":
+                        typenum[3] *= 2;
+                        typenum[4] *= 2;
+                        typenum[5] *= 0;
+                        typenum[6] *= 2;
+                        typenum[7] *= 0.5;
+                        typenum[13] *= 0.5;
+                        break;
+                    case "비행":
+                        typenum[4] *= 0.5;
+                        typenum[5] *= 2;
+                        typenum[6] *= 2;
+                        typenum[7] *= 0.5;
+                        typenum[9] *= 0;
+                        typenum[12] *= 0.5;
+                        typenum[13] *= 2;
+                        break;
+                    case "벌레":
+                        typenum[2] *= 2;
+                        typenum[4] *= 0.5;
+                        typenum[7] *= 0.5;
+                        typenum[9] *= 0.5;
+                        typenum[10] *= 2;
+                        typenum[13] *= 2;
+                        break;
+                    case "바위":
+                        typenum[1] *= 0.5;
+                        typenum[2] *= 0.5;
+                        typenum[3] *= 2;
+                        typenum[4] *= 2;
+                        typenum[7] *= 2;
+                        typenum[8] *= 0.5;
+                        typenum[9] *= 2;
+                        typenum[10] *= 0.5;
+                        typenum[17] *= 2;
+                        break;
+                    case "고스트":
+                        typenum[1] *= 0;
+                        typenum[7] *= 0;
+                        typenum[8] *= 0.5;
+                        typenum[12] *= 0.5;
+                        typenum[14] *= 2;
+                        typenum[16] *= 2;
+                        break;
+                    case "강철":
+                        typenum[1] *= 0.5;
+                        typenum[2] *= 2;
+                        typenum[4] *= 0.5;
+                        typenum[6] *= 0.5;
+                        typenum[7] *= 2;
+                        typenum[8] *= 0;
+                        typenum[9] *= 2;
+                        typenum[10] *= 0.5;
+                        typenum[11] *= 0.5;
+                        typenum[12] *= 0.5;
+                        typenum[13] *= 0.5;
+                        typenum[15] *= 0.5;
+                        typenum[17] *= 0.5;
+                        typenum[18] *= 0.5;
+                        break;
+                    case "불꽃":
+                        typenum[2] *= 0.5;
+                        typenum[3] *= 2;
+                        typenum[4] *= 0.5;
+                        typenum[6] *= 0.5;
+                        typenum[9] *= 2;
+                        typenum[12] *= 0.5;
+                        typenum[13] *= 2;
+                        typenum[17] *= 0.5;
+                        typenum[18] *= 0.5;
+                        break;
+                    case "물":
+                        typenum[2] *= 0.5;
+                        typenum[3] *= 0.5;
+                        typenum[4] *= 2;
+                        typenum[5] *= 2;
+                        typenum[6] *= 0.5;
+                        typenum[17] *= 0.5;
+                        break;
+                    case "전기":
+                        typenum[5] *= 0.5;
+                        typenum[9] *= 2;
+                        typenum[10] *= 0.5;
+                        break;
+                    case "풀":
+                        typenum[2] *= 2;
+                        typenum[3] *= 0.5;
+                        typenum[4] *= 0.5;
+                        typenum[5] *= 0.5;
+                        typenum[6] *= 2;
+                        typenum[8] *= 2;
+                        typenum[9] *= 0.5;
+                        typenum[10] *= 2;
+                        typenum[12] *= 2;
+                        break;
+                    case "얼음":
+                        typenum[2] *= 2;
+                        typenum[6] *= 0.5;
+                        typenum[7] *= 2;
+                        typenum[13] *= 2;
+                        typenum[17] *= 2;
+                        break;
+                    case "에스퍼":
+                        typenum[7] *= 0.5;
+                        typenum[11] *= 0.5;
+                        typenum[12] *= 2;
+                        typenum[14] *= 2;
+                        typenum[16] *= 2;
+                        break;
+                    case "드래곤":
+                        typenum[2] *= 0.5;
+                        typenum[3] *= 0.5;
+                        typenum[4] *= 0.5;
+                        typenum[5] *= 0.5;
+                        typenum[6] *= 2;
+                        typenum[15] *= 2;
+                        typenum[18] *= 2;
+                        break;
+                    case "악":
+                        typenum[7] *= 2;
+                        typenum[11] *= 0;
+                        typenum[12] *= 2;
+                        typenum[14] *= 0.5;
+                        typenum[16] *= 0.5;
+                        typenum[18] *= 2;
+                        break;
+                    case "페어리":
+                        typenum[7] *= 0.5;
+                        typenum[8] *= 2;
+                        typenum[12] *= 0.5;
+                        typenum[15] *= 0;
+                        typenum[16] *= 0.5;
+                        typenum[17] *= 2;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else {
+                document.getElementById('othertype').innerHTML += '<br>같은 타입을 고르시면 단일 타입으로 계산됩니다.';
+            }
+            var good = "효과가 굉장했다! :";
+            var soso = '효과 있다 :';
+            var bad = '효과가 별로다... :';
+            var null1 = '효과가 없다! :'
+            for (var i = 1; i < 19; i++) {
+                if (typenum[i] > 1) {
+                    good += " " + typearr[i] + " " + typenum[i] + "배 ";
+                }
+                else if (typenum[i] == 1) {
+                    soso += " " + typearr[i] + " " + typenum[i] + "배 ";
+                }
+                else if (typenum[i] == 0.5 || typenum[i] == 0.25) {
+                    bad += " " + typearr[i] + " " + typenum[i] + "배 ";
+                }
+                else {
+                    null1 += " " + typearr[i] + " " + typenum[i] + "배 ";
+                }
+
+            }
+
+            document.getElementById('outfut').innerHTML = good + "<br><br>" + soso + "<br><br>" + bad + "<br><br>" + null1;
+        }
+    </script>
+</head>
+
+<body>
+    <header style="margin-left: 15%;"><img src="media/ㅋㅋㅋ.gif"></header>
+    <nav id="pokelink">
+        <ul>
+            <strong>
+                <li><a href="index.html">포켓몬 배틀 도우미</a></li>
+                <li><a href="pokeinpo.html">타입 설명</a></li>
+                <li><a href="pokemini.html">미니게임</a></li>
+                <li><a href="pokemake.html">제작 정보</a></li>
+            </strong>
+        </ul>
+    </nav>
+    <section>
+        <article id="introduce">
+            <br>
+            안녕하세요 포켓몬 배틀 도우미입니다.<br>
+            포켓몬 배틀을 하다 보면 18개나 있는 상성을 그때그때 맞추기는 어려운데요.<br>
+            아래의 박스에서 포켓몬 상성을 선택하여 배틀에 맞는 포켓몬을 선택해 보세요!<br>
+            현재 상대의 포켓몬의 타입을 적어주시면 그에 강한 것과 약한 것이 표시됩니다.<br>
+            <br>
+        </article>
+        <article id="↓">
+            ↓ ↓ ↓ ↓ ↓ ↓
+        </article>
+        <article id="helper">
+            <br>
+            <br>
+            타입 1 :
+            <select name="type1" id="type1">
+                <option value="1" selected>노말</option>
+                <option value="2">격투</option>
+                <option value="3">독</option>
+                <option value="4">땅</option>
+                <option value="5">비행</option>
+                <option value="6">벌레</option>
+                <option value="7">바위</option>
+                <option value="8">고스트</option>
+                <option value="9">강철</option>
+                <option value="10">불꽃</option>
+                <option value="11">물</option>
+                <option value="12">전기</option>
+                <option value="13">풀</option>
+                <option value="14">얼음</option>
+                <option value="15">에스퍼</option>
+                <option value="16">드래곤</option>
+                <option value="17">악</option>
+                <option value="18">페어리</option>
+            </select>
+            타입 2 :
+            <select name="type2" id="type2">
+                <option value="0" selected> </option>
+                <option value="1">노말</option>
+                <option value="2">격투</option>
+                <option value="3">독</option>
+                <option value="4">땅</option>
+                <option value="5">비행</option>
+                <option value="6">벌레</option>
+                <option value="7">바위</option>
+                <option value="8">고스트</option>
+                <option value="9">강철</option>
+                <option value="10">불꽃</option>
+                <option value="11">물</option>
+                <option value="12">전기</option>
+                <option value="13">풀</option>
+                <option value="14">얼음</option>
+                <option value="15">에스퍼</option>
+                <option value="16">드래곤</option>
+                <option value="17">악</option>
+                <option value="18">페어리</option>
+            </select>
+            <br>
+            <p>
+                타입을 다 고르셨다면 눌러주세요!
+            </p>
+            <input type="button" id="typeclear" value="뀨욱" onclick="Pokeprint()">
+            </input>
+            <p></p>
+        </article>
+        <article id="pan">
+            <p id="othertype">같은 타입을 고르신다면 단일 타입으로 계산됩니다. <br>감사합니다!</p>
+            <p id="outfut"> </p>
+        </article>
+    </section>
+
+    <aside></aside>
+    <footer>
+        <ul>
+            <li>만든이: 이성호</li>
+            <li>학번 : 201811712</li>
+            <li>이메일 : dltjdgh0428@naver.com</li>
+        </ul>
+    </footer>
+</body>
+
+</html>
