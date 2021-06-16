@@ -53,6 +53,7 @@
                 start = 1;
                 rand = Math.floor(Math.random() * nomimg.length);
                 pimage.src = shwimg[rand];
+                randclear.push(rand);// 맞춘문제 모음
                 document.getElementById('hint').innerHTML = "";
                 document.getElementById('typeclearB').value = "정답 !";
                 document.getElementById('Hgif').src = "media/달리는 피카츄.gif"
